@@ -1,0 +1,48 @@
+<!-- {% extends "base.html" %} -->
+
+{% block content %}
+  <h2>Dashboard</h2>
+
+  <!-- Liste des patients -->
+  <h3>Liste des patients</h3>
+  <ul>
+    {% for patient in patients %}
+      <li>
+        <a href="?patient_id={{ patient.id }}">{{ patient.nom }} {{ patient.prenom }}</a>
+      </li>
+    {% empty %}
+      <li>Aucun patient trouvé.</li>
+    {% endfor %}
+  </ul>
+
+  <!-- Liste des consultations pour un patient sélectionné -->
+  {% if consultations %}
+    <h3>Consultations du patient sélectionné</h3>
+    <ul>
+      {% for consultation in consultations %}
+        <li>{{ consultation.date_consultation }} - {{ consultation.description }}</li>
+      {% empty %}
+        <li>Aucune consultation enregistrée pour ce patient.</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <!-- Nombre de patients reçus par chaque médecin -->
+  <h3>Nombre de patients reçus par médecin</h3>
+  <table>
+    <tr>
+      <th>Médecin</th>
+      <th>Nombre de patients</th>
+    </tr>
+    {% for medecin in medecins %}
+      <tr>
+        <td>{{ medecin.nom }} {{ medecin.prenom }}</td>
+        <td>{{ medecin.nombre_patients }}</td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="2">Aucun médecin trouvé.</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

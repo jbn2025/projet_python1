@@ -17,7 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include , path
 
+
+
+
+# {"conversationId":"38d2b9e5-b31a-465b-ae13-a83e0b2b5299","source":"instruct"}
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("Clinique_Medipam.urls")),
+    
 ]
