@@ -3,6 +3,11 @@ from django.core.exceptions import ValidationError
 from datetime import date
 from .models import Medecin, Patient, Consultation
 
+
+admin.site.site_header = "MediPam"
+admin.site.site_title = "Titre de l'onglet"
+admin.site.index_title = "Bienvenue dans l'administration De MediPam"
+
 @admin.register(Medecin)
 class MedecinAdmin(admin.ModelAdmin):
     list_display = ("nom", "prenom", "nif", "date_naissance", "email")
